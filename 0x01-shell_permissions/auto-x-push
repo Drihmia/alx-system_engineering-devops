@@ -10,7 +10,7 @@ if [ -z "$script_name" ]; then
 fi
 
 # Make the specified script executable for the owner
-chmod +x "$script_name"
+chmod u+x "$script_name"
 
 # Prompt the user for the commit message
 read -p "Enter the commit message: " commit_message
