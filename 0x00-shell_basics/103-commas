@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -lsmp -1
+ls -lsmp
