@@ -33,4 +33,4 @@ fi
 # Perform the git add and commit with the provided message
 git add .
 git commit -m "$commit_message"
-
+git push
