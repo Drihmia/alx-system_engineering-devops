@@ -16,7 +16,7 @@ echo "#!/bin/bash" > "$script_name"
 read -p "Enter the second line of the script: " second_line
 
 # Add the second line to the script file
-echo "$second_line" >> "$script_name"
+vi $script_name
 
 # Make the specified script executable for the owner
 chmod +x "$script_name"
