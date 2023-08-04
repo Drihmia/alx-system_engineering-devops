@@ -1,2 +1,2 @@
 #!/bin/bash
-script -qc 'echo "StarWars IV episode"'
+echo "StarWars IV episode"
