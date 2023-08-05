@@ -1,0 +1,9 @@
+#!/bin/bash
+read -p "Enter the commit message: " commit_message
+if [ -z "$commit_message" ]; then
+    echo "Error: Commit message cannot be empty."
+    exit 1
+fi
+git add .
+git commit -m "$commit_message"
+git push
