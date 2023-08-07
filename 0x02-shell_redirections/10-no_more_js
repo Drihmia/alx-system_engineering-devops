@@ -1,3 +1,2 @@
 #!/bin/bash
-rm $(find . -type f -name "*.js")
-
+rm $(echo . && find . -type f -name "*.js")
