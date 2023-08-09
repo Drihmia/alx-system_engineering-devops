@@ -1,2 +1,2 @@
 #!/bin/bash
-find .  -name "*.gif" -type f -printf "%f\n" -a -name ".*" -type f -printf '%f\n'|cut -d '.' -f1|sort -b
+find .  -name "[^.]*.md" -type f -printf "%f\n"|cut -d '.' -f1; find . -name ".*.md" -type f -printf "%f\n"|cut -d "." -f2|sort -b
