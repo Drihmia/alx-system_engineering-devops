@@ -1,0 +1,36 @@
+#!/bin/bash
+
+# Prompt the user for the script name
+read -p "Enter the script name: " script_name
+
+# Check if the script name is empty
+if [ -z "$script_name" ]; then
+    echo "Error: Script name cannot be empty."
+    exit 1
+fi
+
+# Create the script file with the given script_name
+echo "#!/bin/bash" > "$script_name"
+
+# Prompt the user for the second line of the script
+read -p "Enter the second line of the script: " second_line
+
+# Add the second line to the script file
+echo "$second_line" >> "$script_name"
+
+# Make the specified script executable for the owner
+chmod +x "$script_name"
+
+# Prompt the user for the commit message
+read -p "Enter the commit message: " commit_message
+
+# Check if the commit message is empty
+if [ -z "$commit_message" ]; then
+    echo "Error: Commit message cannot be empty."
+    exit 1
+fi
+
+# Perform the git add and commit with the provided message
+git add .
+git commit -m "$commit_message"
+git push
