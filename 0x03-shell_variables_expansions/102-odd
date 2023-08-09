@@ -1,2 +1,2 @@
 #!/bin/bash
-grep -n ".*"|grep -E "^[135779][0-9]*:"|cut -d ":" -f2
+nl -bt -n rz -i1 -s ":" -v1 -w2|grep -E "^.[13579]-*"|cut -d ":" -f2
