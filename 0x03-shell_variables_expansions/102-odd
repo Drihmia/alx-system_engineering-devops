@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -1|grep -n ".*"|grep -v "[02468]|cut -d ":" -f2
+grep -n ".*"|grep -v "[02468]|cut -d ":" -f2
