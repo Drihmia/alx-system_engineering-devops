@@ -1,2 +1,2 @@
 #!/bin/bash
-echo {a..z}{a..z}|tr -d 'oo'|tr " " "n"
+echo {a..z}{a..z} |cut -d " " -f-378,380-|tr " " "\n"
