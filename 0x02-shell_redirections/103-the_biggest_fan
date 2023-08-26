@@ -1,2 +1,2 @@
 #!/bin/bash
-cut -f1 nasa_19950801.tsv |sort -r|uniq -ci|tr -s " "|sort -r|cut -d " " -f3
+cut -f1 |sort|uniq -c|sort -r|rev |cut -d " " -f 1 |rev|head -11
