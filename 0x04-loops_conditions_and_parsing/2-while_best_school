@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# a Bash script that displays Best School 10 times using while loop.
+# shellcheck disable=2034
+
+word="Best School"
+i=0
+while [[ $i -lt 10 ]]
+do
+	echo "$word"
+	((i++))
+done
