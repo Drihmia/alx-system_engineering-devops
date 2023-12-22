@@ -4,7 +4,4 @@
 
 pids=$(pgrep -l bash ./4-to_infinity_and_beyond | awk '{print $1}')
 
-if [ -n "$pids" ]
-then
-	kill "$pids"
-fi
+kill "$pids"
