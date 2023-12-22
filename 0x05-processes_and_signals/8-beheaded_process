@@ -2,7 +2,7 @@
 # a Bash script that kills the process 7-highlander.
 
 
-pids="$(pgrep -l bash ./7-highlander | awk '{print $1}')"
+pids="$(pgrep -lf 'bash ./7-highlander' | awk '{print $1}')"
 
 if [ -n "$pids" ]
 then

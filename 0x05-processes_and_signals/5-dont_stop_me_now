@@ -2,6 +2,8 @@
 # a Bash script that stops 4-to_infinity_and_beyond process.
 # I must use kill
 
-pids=$(pgrep -l bash ./4-to_infinity_and_beyond | awk '{print $1}')
-
-kill "$pids"
+pids=$(pgrep -lf 'bash ./4-to_infinity_and_beyond' | awk '{print $1}')
+if [ -n "$pids" ]
+then
+	kill "$pids"
+fi
