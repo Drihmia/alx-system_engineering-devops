@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# a Bash script that kills the process 7-highlander.
+
+
+pids="$(pgrep -l bash ./7-highlander | awk '{print $1}')"
+
+if [ -n "$pids" ]
+then
+	kill -s kill "$pids"
+fi
