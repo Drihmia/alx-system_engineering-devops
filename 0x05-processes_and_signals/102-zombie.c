@@ -23,7 +23,7 @@ int infinite_while(void)
 int main(void)
 {
 	pid_t pid;
-	int status, i;
+	int i;
 
 	for (i = 0; i < 5; i++)
 	{
