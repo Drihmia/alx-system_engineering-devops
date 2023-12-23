@@ -3,6 +3,7 @@
 #include <sys/wait.h>
 #include <stdlib.h>
 
+
 /**
  * infinite_while - a function that loops infinitly.
  * Return: 0 if succeeded, otherwise 0.
