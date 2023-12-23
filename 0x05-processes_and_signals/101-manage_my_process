@@ -1,0 +1,61 @@
+#!/usr/bin/env bash
+# Bash (init) script 101-manage_my_process that manages manage_my_process.
+# when we pass the this script the instruction:
+	# start;
+		#it stars the manage_my_process's script
+		# create a file called /var/run/my_process.pid that contains its PID.
+		# display manage_my_process started
+	# stop;
+		# Stops manage_my_process
+		# Deletes the file /var/run/my_process.pid
+		# Displays manage_my_process stopped
+	# restart;
+		# Stops manage_my_process
+		# Deletes the file /var/run/my_process.pid
+		# Starts manage_my_process
+		# Creates a file containing its PID in /var/run/my_process.pid
+		# Displays manage_my_process restarted
+# it accept one argument, if we passe more or less than one arguement,
+# Displays Usage: manage_my_process {start|stop|restart} if any other argument or no argument is passed.
+# shellcheck disable=SC2086
+
+# a funtion that handle the start instruction
+start()
+{
+	chmod +x manage_my_process
+	./manage_my_process &
+	echo "$$" > /var/run/my_process.pid
+
+}
+
+# a funtion that handle stop instruction.
+stop()
+{
+	pids=$(pgrep -lf 'bash ./manage_my_process' | awk '{print $1}')
+	if [ -n "$pids" ]
+	then
+		kill -s kill $pids
+	fi
+	rm -f /var/run/my_process.pid
+}
+
+if (( $# != 1 ))
+then
+	echo "Usage: manage_my_process {start|stop|restart}"
+else
+	if [ "$1" == "start" ]
+	then
+		start
+		echo "manage_my_process started"
+	elif [ "$1" == "stop" ]
+	then
+		stop
+		echo "manage_my_process stopped"
+	elif [ "$1" == "restart" ]
+	then
+		stop
+		start
+		echo "manage_my_process restarted"
+	fi
+fi
+
