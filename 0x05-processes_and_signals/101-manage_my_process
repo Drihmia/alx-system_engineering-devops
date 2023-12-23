@@ -17,7 +17,7 @@
 		# Displays manage_my_process restarted
 # it accept one argument, if we passe more or less than one arguement,
 # Displays Usage: manage_my_process {start|stop|restart} if any other argument or no argument is passed.
-# shellcheck disable=SC2086
+# shellcheck disable=
 
 # a funtion that handle the start instruction
 start()
@@ -41,6 +41,7 @@ stop()
 		kill -s kill "$i"
 	fi
 	rm -f /var/run/my_process.pid
+	rm -f /tmp/my_process
 }
 
 if (( $# != 1 ))
