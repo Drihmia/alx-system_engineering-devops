@@ -25,16 +25,20 @@ start()
 	chmod +x manage_my_process
 	./manage_my_process &
 	echo "$$" > /var/run/my_process.pid
-
 }
 
 # a funtion that handle stop instruction.
 stop()
 {
 	pids=$(pgrep -lf 'bash ./manage_my_process' | awk '{print $1}')
-	if [ -n "$pids" ]
+	for i in $pids
+	do
+		:
+	done
+
+	if [ -n "$i" ]
 	then
-		kill -s kill $pids
+		kill -s kill "$i"
 	fi
 	rm -f /var/run/my_process.pid
 }
