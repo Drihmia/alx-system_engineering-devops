@@ -1,3 +1,3 @@
 #!/usr/bin/env ruby
-matching_group = ARGV[0].match(/.*\[from:(\w+|\+?\d+)\].*\[to:(\w+|\+?\d+)\].*\[flags:(.*?)\].*/)
-puts matching_group[1] + "," + matching_group[2] + "," + matching_group[3]
+matching_group = ARGV[0].match(/.*\[from:(?<from>\w+|\+?\d+)\].*\[to:(?<to>\w+|\+?\d+)\].*\[flags:(?<flags>.*?)\].*/)
+puts "#{matching_group[:from]}, #{matching_group[:to]}, #{matching_group[:flags]}"
