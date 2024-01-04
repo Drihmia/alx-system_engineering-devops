@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# this script displays lestening ports
+	# That only shows listening sockets
+	# That shows the PID and name of the program to which each socket belongs
+
+netstat --programs --protocol=unix -l --tcp --udp
