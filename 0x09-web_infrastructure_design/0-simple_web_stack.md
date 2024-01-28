@@ -1,7 +1,7 @@
 # Task 0: Simple Web Stack
 
 - [BACK](0x09-web_infrastructure_design/README.md)
-- [NEXT](./1-distributed_web_infrastructure)
+- [NEXT](./1-distributed_web_infrastructure.md)
 
 ## Design Overview
 

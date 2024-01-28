@@ -1,8 +1,8 @@
 # Task 1: Distributed Web Infrastructure
 
 - [BACK](0x09-web_infrastructure_design/README.md)
-- [PREVIOUS](./0-simple_web_stack)
-- [NEXT](./2-secured_and_monitored_web_infrastructure)
+- [PREVIOUS](./0-simple_web_stack.md)
+- [NEXT](./2-secured_and_monitored_web_infrastructure.md)
 
 
 ## Infrastructure Overview
