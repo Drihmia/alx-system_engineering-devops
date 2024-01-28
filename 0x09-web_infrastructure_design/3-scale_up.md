@@ -1,6 +1,6 @@
 # Task 3: Scaling Up - Advanced Readme
 
-- [BACK](0x09-web_infrastructure_design/README.md)
+- [BACK](./README.md)
 - [PREVIOUS](./2-secured_and_monitored_web_infrastructure.md)
 
 ## Architectural Ascent
