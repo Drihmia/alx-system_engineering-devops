@@ -1,5 +1,10 @@
 # Task 1: Distributed Web Infrastructure
 
+- [BACK](0x09-web_infrastructure_design/README.md)
+- [PREVIOUS](./0-simple_web_stack)
+- [NEXT](./2-secured_and_monitored_web_infrastructure)
+
+
 ## Infrastructure Overview
 
 1. **Load Balancer (HAProxy):**
@@ -81,3 +86,7 @@ Diagram link: [Distributed Web Infrastructure Diagram](https://drive.google.com/
 
 This README addresses the requirements, explanations, and identified challenges for Task 1. Feel free to customize it further based on your preferences or add specific details as needed.
 
+- [BACK](0x09-web_infrastructure_design/README.md)
+- [PREVIOUS](./0-simple_web_stack)
+- [NEXT](./2-secured_and_monitored_web_infrastructure)
+![Alt text](1.png)

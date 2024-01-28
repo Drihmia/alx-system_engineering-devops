@@ -1,5 +1,8 @@
 # Task 0: Simple Web Stack
 
+- [BACK](0x09-web_infrastructure_design/README.md)
+- [NEXT](./1-distributed_web_infrastructure)
+
 ## Design Overview
 
 1. **Server:**
@@ -58,3 +61,7 @@ Diagram link: [Distributed Web Infrastructure Diagram](https://drive.google.com/
 
 This tailored solution aims to reflect a distinctive style while maintaining clarity and completeness. If there are specific nuances you'd like to incorporate or further details you'd like to emphasize, feel free to let me know!
 
+- [BACK](0x09-web_infrastructure_design/README.md)
+- [NEXT](./1-distributed_web_infrastructure)
+
+![Alt text](0.png)

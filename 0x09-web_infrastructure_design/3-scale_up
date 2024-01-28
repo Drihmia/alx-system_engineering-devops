@@ -1,5 +1,8 @@
 # Task 3: Scaling Up - Advanced Readme
 
+- [BACK](0x09-web_infrastructure_design/README.md)
+- [PREVIOUS](./2-secured_and_monitored_web_infrastructure)
+
 ## Architectural Ascent
 
 ### Components in the Spotlight:
@@ -38,3 +41,8 @@
 ---
 
 This advanced documentation outlines the strategic scaling of components, featuring an additional server and a load balancer duo configured as a resilient cluster. The architecture is primed for increased loads, ensures uninterrupted service, highlights SSL/TLS termination at the load balancer, and emphasizes communication with the servers without SSL/TLS encryption. A diagram link is provided in the repository, capturing the essence of the advanced scaling approach.
+
+- [BACK](0x09-web_infrastructure_design/README.md)
+- [PREVIOUS](./2-secured_and_monitored_web_infrastructure)
+
+![Alt text](3.png)
