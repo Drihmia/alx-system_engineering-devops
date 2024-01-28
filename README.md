@@ -12,4 +12,5 @@
 - [0x06-regular_expressions](0x06-regular_expressions/README.md)
 - [0x07-networking_basics](0x07-networking_basics/README.md)
 - [0x08-networking_basics_2](0x08-networking_basics_2/README.md)
+- [0x09-web_infrastructure_design](0x09-web_infrastructure_design/README.md)
 - [command_line_for_the_win](command_line_for_the_win/README.md)
