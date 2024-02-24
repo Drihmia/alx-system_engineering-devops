@@ -10,11 +10,11 @@ package { 'python3-pip':
 # Werkzeug installation
 package { 'Werkzeug':
   ensure   => '2.1.1',
-  provider => pip3,
+  provider => 'pip3',
 }
 
 # Flask installation
 package { 'flask':
   ensure   => '2.1.0',
-  provider => pip3,
+  provider => 'pip3',
 }
