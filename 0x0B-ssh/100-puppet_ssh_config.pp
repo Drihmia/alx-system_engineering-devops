@@ -3,7 +3,7 @@
 
 
 # create or modifie if exist the needed file
-file { '/home/ubuntu/.ssh/school':
+file { "${facts['home']}/.ssh/school":
   ensure  => file,
   mode    => '0400',
   owner   => ubuntu,
