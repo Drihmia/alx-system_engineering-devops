@@ -8,17 +8,14 @@
 # to respect above requirements (this script will be run on the server itself)
 # I cant't  use systemctl for restarting nginx.
 
-apt-get -y update
-apt-get -y upgrade
 apt-get -y install nginx
 echo "Hello World!" > /var/www/html/index.html
 echo "
 server {
 	listen 80;
-	server_name _;
+	server_name __;
 	root /var/www/html;
 	index index.html;
-	locations / {
-		try_files \$uri \$uri/ =404;
-	}
 }" >> /etc/nginx/sites-enabled/default
+
+nginx -s reload
