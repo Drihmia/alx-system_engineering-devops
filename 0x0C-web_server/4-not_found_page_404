@@ -6,7 +6,7 @@
 #    automatically configure a Ubuntu machine to respect above requirements
 # 	- write 3-redirection so that it configures a brand new Ubuntu machine to the requirements asked in this task
 
-new_str="server_name _;\n\terror_page 404 \/404.html;"
+new_str="server_name _;\n\terror_page 404 \/404.html;\n\tlocation = \/404.html {\n\t\troot /var/www/html:\n\t\tinternal;\n\t\t}"
 
 sudo touch /var/www/html/404.html
 sudo chmod 777 /var/www/html/404.html
