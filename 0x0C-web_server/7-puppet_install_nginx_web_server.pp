@@ -1,7 +1,7 @@
 # Nginx should be listening on port 80
 
 
-package {'nginx-install':
+package {'nginx':
   ensure => installed,
 }
 file {'/var/www/html/index.html':
@@ -29,11 +29,11 @@ file {'/etc/nginx/sites-available/default':
 	}
 
 }",
-  notify  => Service['nginx-run'],
+  notify  => Service['nginx'],
 }
 
-service {'nginx-run':
+service {'nginx':
   ensure  => running,
   enable  => true,
-  require => Package['nginx-install'],
+  require => Package['nginx'],
 }
