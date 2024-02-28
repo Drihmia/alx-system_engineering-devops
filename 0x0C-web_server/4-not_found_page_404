@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# Configure your Nginx server so that /redirect_me is redirecting to another page.
+# Requirements:
+# 	- The redirection must be a “301 Moved Permanently”
+# 	- You answer file should be a Bash script containing commands to
+#    automatically configure a Ubuntu machine to respect above requirements
+# 	- write 3-redirection so that it configures a brand new Ubuntu machine to the requirements asked in this task
+
+new_str="server_name _;\n\terror_page 404 \/404.html;"
+
+sudo touch /var/www/html/404.html
+sudo chmod 777 /var/www/html/404.html
+echo "Ceci n'est pas une page" > /var/www/html/404.html
+sudo chmod 644 /var/www/html/404.html
+
+sudo sed -i 's/server_name _;/'"$new_str"'/' /etc/nginx/sites-available/default
+
+sudo service nginx restart
