@@ -25,10 +25,11 @@ file {'/etc/nginx/sites-available/default':
 		}
 
 	location / {
-		try_files ${uri} ${uri}/ =404;
+		try_files \$uri \$uri/ =404;
 	}
 
 }",
+  notify  => Service['nginx-run'],
 }
 
 service {'nginx-run':
