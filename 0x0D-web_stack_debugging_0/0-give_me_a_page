@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
-#  Paste the command(s) you used to fix the issue in your answer file.
+# Paste the command(s) you used to fix the issue in your answer file.
 # after connecting to the container and fixing whatever needed to be fixed
 # (here is your mission), you can see that curling port 80 return a page
 # that contains Hello Holberton
-sudo service apache2 restart
+
+sudo sed -i 's/Listen 8080/Listen 80/' /etc/apache2/ports.conf
+
+sudo service apache2 start
