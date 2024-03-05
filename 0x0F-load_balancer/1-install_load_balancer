@@ -15,14 +15,12 @@ echo "
 
 backend web-backend
         balance roundrobin
-	mode http
 
         server 510946-web-01 100.26.168.177:80 check
         server 510946-web-02 54.237.107.28:80 check
 
 frontend http
 	bind *:80
-	mode http
 
 	default_backend web-backend
 	" >>/etc/haproxy/haproxy.cfg
