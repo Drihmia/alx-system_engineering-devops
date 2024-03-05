@@ -25,5 +25,5 @@ file_line { 'add_custom_header':
 service { 'nginx':
   ensure    => running,
   enable    => true,
-  subscribe => ile['/etc/nginx/sites-available/default'],
+  subscribe => File['/etc/nginx/sites-available/default'],
 }
