@@ -1,6 +1,7 @@
 # Update system packages
-package { 'update':
-  ensure => latest,
+exec { 'apt-update':
+  command => '/usr/bin/apt-get -y update',
+  path    => '/usr/bin/',
 }
 
 # Install Nginx package
@@ -24,5 +25,5 @@ file_line { 'add_custom_header':
 service { 'nginx':
   ensure    => running,
   enable    => true,
-  subscribe => File_line['add_custom_header'],
+  subscribe => ile['/etc/nginx/sites-available/default'],
 }
