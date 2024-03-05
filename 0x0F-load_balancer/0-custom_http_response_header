@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+# This script configures a brand new Ubuntu machine to the requirements asked in the task
+
+sudo apt-get -y update
+# installing haprox server
+sudo apt-get -y install nginx
+
+
+# Phase 1: setting a custom header response
+host_name=$(hostname)
+new_str="server_name _;\n\tadd_header X-Served-By \"$host_name\";\n"
+
+sudo sed -i 's/server_name _;/'"$new_str"'/' /etc/nginx/sites-available/default
+
+
+# Phase 2: setting the default page to montion the name of the server
+# that is being used
+sudo touch /var/www/html/index.html
+
+sudo chmod 666 /var/www/html/index.html
+echo "Hello World from \"$host_name\"!" > /var/www/html/index.html
+sudo chmod 644 /var/www/html/index.html
+
+
+# Phase 3: restart the nginx server
+sudo service nginx restart
+
