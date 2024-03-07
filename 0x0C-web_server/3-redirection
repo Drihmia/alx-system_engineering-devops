@@ -6,8 +6,8 @@
 #    automatically configure a Ubuntu machine to respect above requirements
 # 	- write 3-redirection so that it configures a brand new Ubuntu machine to the requirements asked in this task
 
-new_str="server_name _;\n\tlocation = \/redirect_me\/ {\n\t\treturn 301 https:\/\/github.com\/Drihmia;\n\t}\n\tlocation = \/redirect_me {\n\t\treturn 301 https:\/\/github.com\/Drihmia;\n\t}"
+new_str="server_name _;\n\tlocation = \/redirect_me {\n\t\treturn 301 \/redirect_me\/;\n\t}\n\tlocation = \/redirect_me\/ {\n\t\treturn 301 https:\/\/github.com\/Drihmia;\n\t}"
 
 sudo sed -i 's/server_name _;/'"$new_str"'/' /etc/nginx/sites-available/default
 
-sudo service nginx restart
+sudo nginx -s reload
