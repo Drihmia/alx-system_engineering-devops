@@ -14,7 +14,7 @@ frontend http_front
     redirect scheme https code 301 if !{ ssl_fc }
 
 frontend https_front
-    bind *:443 ssl crt /etc/ssl/certs/holberton.online.pem
+    bind *:443 ssl crt /etc/ssl/certs/..
     reqadd X-Forwarded-Proto:\ https
     default_backend http_back
 
