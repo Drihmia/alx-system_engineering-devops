@@ -13,7 +13,7 @@ get_dns_info() {
 
     # Get DNS record information for each subdomain
     for sub in "${subdomains[@]}"; do
-        record_type=$(dig +short "$sub"."$domain" | awk '{print $4}')
+	record_type=$(dig "$domain" | awk '/;; ANSWER SECTION/{getline;print $4}')
         destination=$(dig +short "$sub"."$domain")
         echo "The subdomain $sub is a $record_type record and points to $destination"
     done
