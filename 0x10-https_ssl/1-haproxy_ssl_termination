@@ -1,4 +1,6 @@
 global
+        tune.ssl.default-dh-param 2048
+
         log /dev/log    local0
         log /dev/log    local1 notice
         chroot /var/lib/haproxy
@@ -33,15 +35,15 @@ defaults
         errorfile 503 /etc/haproxy/errors/503.http
         errorfile 504 /etc/haproxy/errors/504.http
 
+backend web-backend
+        balance roundrobin
+        mode http
+
+        server 510946-web-01 100.26.168.177:80 check
+        server 510946-web-02 54.237.107.28:80 check
+
 frontend http
-    bind *:443 ssl crt /etc/letsencrypt/live/drihmia.tech/fullchain.pem
-    mode http
+        bind *:443 ssl crt /etc/letsencrypt/live/drihmia.tech/drihmia.tech.pem
+        mode http
 
-    acl letsencrypt_check path_beg /.well-known/acme-challenge/
-    use_backend letsencrypt if letsencrypt_check
-
-    default_backend web-backend
-
-backend letsencrypt
-    mode http
-    server letsencrypt_server 127.0.0.1:8080
+        default_backend web-backend
