@@ -1,6 +1,5 @@
 # Nginx should be listening on port 80
 
-
 package {'nginx':
   ensure => installed,
 }
@@ -18,18 +17,20 @@ file {'/etc/nginx/sites-available/default':
 	index  index.html index.htm index.nginx-debian.html ;
 
 	server_name _;
-	error_page 404 /404.html;
-	location = /404.html {
-		root /var/www/html;
-		internal;
-		}
-
+	
+	location /redirect_me/ {
+		return 301 https://github.com/Drihmia;
+	}
 	location / {
 		try_files \$uri \$uri/ =404;
 	}
-
 }",
   notify  => Service['nginx'],
+}
+
+excec {'restart':
+  command => 'sudo service nginx restart',
+  path    => '/usr/bin/'
 }
 
 service {'nginx':
