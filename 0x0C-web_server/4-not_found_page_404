@@ -6,6 +6,8 @@
 #    automatically configure a Ubuntu machine to respect above requirements
 # 	- write 3-redirection so that it configures a brand new Ubuntu machine to the requirements asked in this task
 
+sudo apt-get update -y
+sudo apt-get install nginx -y
 
 new_str_err="server_name _;\n\terror_page 404 \/404.html;"
 
