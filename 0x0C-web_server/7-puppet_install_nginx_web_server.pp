@@ -9,7 +9,7 @@ package {'nginx':
 }
 file {'/var/www/html/index.html':
   content => 'Hello World!
-  ',
+',
 }
 file {'/etc/nginx/sites-available/default':
   ensure  => file,
