@@ -30,7 +30,6 @@ file {'/etc/nginx/sites-available/default':
 		try_files \$uri \$uri/ =404;
 	}
 }",
-  notify  => Package['nginx'],
 }
 
 exec {'restart':
