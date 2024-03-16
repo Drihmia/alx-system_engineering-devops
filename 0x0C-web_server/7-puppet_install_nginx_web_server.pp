@@ -8,6 +8,7 @@ package {'nginx':
   ensure => installed,
 }
 file {'/var/www/html/index.html':
+  ensure  => file,
   content => 'Hello World!
 ',
 }
