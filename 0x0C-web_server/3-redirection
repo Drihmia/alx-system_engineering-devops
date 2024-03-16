@@ -18,7 +18,7 @@ echo "Hello World!" > /var/www/html/index.html
 sudo chmod 644 /var/www/html/index.html
 
 # setting nginx configurtion server 
-new_str="server_name _;\n\tlocation = \/redirect_me {\n\t\treturn 301 \/redirect_me\/;\n\t}\n\tlocation = \/redirect_me\/ {\n\t\treturn 301 https:\/\/github.com\/Drihmia;\n\t}"
+new_str="server_name _;\n\n\tlocation = \/redirect_me\/ {\n\t\treturn 301 https:\/\/github.com\/Drihmia;\n\t}"
 
 sudo sed -i 's/server_name _;/'"$new_str"'/' /etc/nginx/sites-available/default
 
