@@ -24,8 +24,8 @@ file {'/etc/nginx/sites-available/default':
 	location / {
 		try_files \$uri \$uri/ =404;
 	}
-}",
-  notify  => Service['nginx'],
+	}",
+  notify  => Package['nginx'],
 }
 
 excec {'restart':
