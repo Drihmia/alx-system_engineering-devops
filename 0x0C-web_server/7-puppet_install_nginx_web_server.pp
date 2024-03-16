@@ -1,10 +1,15 @@
 # Nginx should be listening on port 80
 
+package {'apt-get update':
+  command => '/usr/bin/apt-get update -y',
+  }
+
 package {'nginx':
   ensure => installed,
 }
 file {'/var/www/html/index.html':
-  content => 'Hello World!',
+  content => 'Hello World!
+  ',
 }
 file {'/etc/nginx/sites-available/default':
   ensure  => file,
