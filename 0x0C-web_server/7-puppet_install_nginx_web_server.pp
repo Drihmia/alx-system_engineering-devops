@@ -28,9 +28,11 @@ file {'/etc/nginx/sites-available/default':
   notify  => Package['nginx'],
 }
 
-excec {'restart':
-  command => 'sudo service nginx restart',
-  path    => '/usr/bin/'
+exec {'restart':
+  command     => 'sudo service nginx restart',
+  path        => ['/usr/bin/', '/usr/sbin/'],
+  refreshonly => true,
+  subscribe   => File['/etc/nginx/sites-available/default'],
 }
 
 service {'nginx':
