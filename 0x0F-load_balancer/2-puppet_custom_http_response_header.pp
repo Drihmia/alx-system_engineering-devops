@@ -7,6 +7,7 @@ exec { 'apt-update':
 # Install Nginx package
 package { 'nginx':
   ensure  => installed,
+  require => Exec['apt-update'],
 }
 
 # Overwrite the file with the custom header added
@@ -27,12 +28,14 @@ file {'/etc/nginx/sites-available/default':
 	location / {
 		try_files \$uri \$uri/ =404;
 	}
-}",
+}
+",
+  require => Package['nginx'],
 }
 
 # Restart the Nginx server
 exec {'restart':
-  command     => 'sudo service nginx restart',
+  command     => 'service nginx restart',
   path        => ['/usr/bin/', '/usr/sbin/'],
   refreshonly => true,
   subscribe   => File['/etc/nginx/sites-available/default'],
