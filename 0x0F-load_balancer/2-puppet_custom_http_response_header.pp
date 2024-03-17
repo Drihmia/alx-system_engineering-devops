@@ -1,27 +1,44 @@
 # Update system packages
 exec { 'apt-update':
-  command => '/usr/bin/apt-get -y update',
-  path    => '/usr/bin/',
+  command => 'apt-get update -y',
+  path    => ['/usr/bin/', '/usr/sbin/'],
 }
 
 # Install Nginx package
 package { 'nginx':
   ensure  => installed,
-  require => Package['update'],
 }
 
-# Add custom HTTP header to Nginx configuration
-file_line { 'add_custom_header':
-  ensure  => present,
-  path    => '/etc/nginx/sites-available/default',
-  line    => '^\s*server_name _;',
-  match   => '^(\s*)server_name _;$',
-  after   => 'server_name _;',
-  content => "        \\1add_header X-Served-By \"${trusted['hostname']}\";",
-  require => Package['nginx'],
+# Overwrite the file with the custom header added
+file {'/etc/nginx/sites-available/default':
+  ensure  => file,
+  content => "server {
+	listen 80 default_server;
+	listen [::]:80 default_server;
+
+	root /var/www/html;
+
+	index  index.html index.htm index.nginx-debian.html ;
+
+	server_name _;
+
+	add_header X-Served-By ${trusted['hostname']};
+
+	location / {
+		try_files \$uri \$uri/ =404;
+	}
+}",
 }
 
-# Restart Nginx service
+# Restart the Nginx server
+exec {'restart':
+  command     => 'sudo service nginx restart',
+  path        => ['/usr/bin/', '/usr/sbin/'],
+  refreshonly => true,
+  subscribe   => File['/etc/nginx/sites-available/default'],
+}
+
+# making sure that Nginx service is running
 service { 'nginx':
   ensure    => running,
   enable    => true,
