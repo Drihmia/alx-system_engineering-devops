@@ -40,7 +40,7 @@ exec {'restart':
 
 # making sure that Nginx service is running
 service { 'nginx':
-  ensure    => running,
-  enable    => true,
-  subscribe => File['/etc/nginx/sites-available/default'],
+  ensure  => running,
+  enable  => true,
+  require => Package['nginx'],
 }
