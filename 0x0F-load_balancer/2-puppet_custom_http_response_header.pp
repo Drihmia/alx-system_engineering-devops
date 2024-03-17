@@ -48,10 +48,3 @@ exec {'restart':
   refreshonly => true,
   subscribe   => File['/etc/nginx/sites-available/default'],
 }
-
-# making sure that Nginx service is running
-service { 'nginx':
-  ensure  => running,
-  enable  => true,
-  require => Exec['restart'],
-}
