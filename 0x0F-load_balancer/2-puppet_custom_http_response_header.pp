@@ -13,24 +13,24 @@ package { 'nginx':
 file {'/etc/nginx/sites-available/default':
   ensure  => file,
   content => "server {
-  listen 80 default_server;
-  listen [::]:80 default_server;
-  root /var/www/html;
-  index  index.html index.htm index.nginx-debian.html;
-  server_name _;
-  add_header X-Served-By ${hostname};
-  location / {
-  	try_files \$uri \$uri/ =404;
-  }
+  	listen 80 default_server;
+	listen [::]:80 default_server;
+  	root /var/www/html;
+  	index  index.html index.htm index.nginx-debian.html;
+  	server_name _;
+  	add_header X-Served-By ${hostname};
+  	location / {
+  		try_files \$uri \$uri/ =404;
+  	}
 
-  location = /redirect_me {
-  	return 301 /redirect_me/;
-  }
-  error_page 404 /404.html;
-	location = /404.html {
-  root /var/www/html;
-  	internal;
-  }
+  	location = /redirect_me {
+  		return 301 /redirect_me/;
+  	}
+	error_page 404 /404.html;
+		location = /404.html {
+	root /var/www/html;
+		internal;
+	}
 }
 ",
   require => Package['nginx'],
