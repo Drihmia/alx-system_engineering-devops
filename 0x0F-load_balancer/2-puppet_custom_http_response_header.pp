@@ -1,6 +1,6 @@
 # Update system packages
 exec { 'apt-update':
-  command => '/usr/bin/apt-get update -y',
+  command => '/usr/bin/apt-get update',
 }
 
 # Install Nginx package
