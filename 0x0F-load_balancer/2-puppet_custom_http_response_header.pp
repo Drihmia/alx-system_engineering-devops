@@ -23,7 +23,7 @@ file {'/etc/nginx/sites-available/default':
 
 	server_name _;
 
-	add_header X-Served-By ${trusted['hostname']};
+	add_header X-Served-By ${hostname};
 
 	location / {
 		try_files \$uri \$uri/ =404;
