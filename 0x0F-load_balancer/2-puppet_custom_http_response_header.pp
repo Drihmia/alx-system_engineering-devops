@@ -1,7 +1,6 @@
 # Update system packages
 exec { 'apt-update':
-  command => 'apt-get update -y',
-  path    => ['/usr/sbin/', '/usr/bin/'],
+  command => '/usr/sbin/apt-get update -y',
 }
 
 # Install Nginx package
@@ -28,6 +27,16 @@ file {'/etc/nginx/sites-available/default':
 	location / {
 		try_files \$uri \$uri/ =404;
 	}
+
+        location = /redirect_me {
+                return 301 /redirect_me/;
+        }
+        error_page 404 /404.html;
+        location = /404.html {
+                root /var/www/html;
+                internal;
+                }
+        }
 }
 ",
   require => Package['nginx'],
@@ -35,8 +44,7 @@ file {'/etc/nginx/sites-available/default':
 
 # Restart the Nginx server
 exec {'restart':
-  command     => 'service nginx restart',
-  path        => ['/usr/sbin/', '/usr/bin/'],
+  command     => '/usr/sbin/service nginx restart',
   refreshonly => true,
   subscribe   => File['/etc/nginx/sites-available/default'],
 }
