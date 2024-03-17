@@ -1,7 +1,7 @@
 # Update system packages
 exec { 'apt-update':
   command => 'apt-get update -y',
-  path    => ['/usr/bin/', '/usr/sbin/'],
+  path    => ['/usr/sbin/', '/usr/bin/'],
 }
 
 # Install Nginx package
@@ -36,7 +36,7 @@ file {'/etc/nginx/sites-available/default':
 # Restart the Nginx server
 exec {'restart':
   command     => 'service nginx restart',
-  path        => ['/usr/bin/', '/usr/sbin/'],
+  path        => ['/usr/sbin/', '/usr/bin/'],
   refreshonly => true,
   subscribe   => File['/etc/nginx/sites-available/default'],
 }
@@ -45,5 +45,5 @@ exec {'restart':
 service { 'nginx':
   ensure  => running,
   enable  => true,
-  require => Package['nginx'],
+  require => Exec['restart'],
 }
