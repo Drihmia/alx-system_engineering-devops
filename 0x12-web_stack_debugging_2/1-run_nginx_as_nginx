@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# a Bash script that configures the container to fit the below requirements
+# nginx must be running as nginx user
+
+chmod +r /etc/nginx/nginx.conf
+bash -c "echo \"user nginx;\" >> \"/etc/nginx/nginx.conf\""
+sudo -u nginx service nginx restart
