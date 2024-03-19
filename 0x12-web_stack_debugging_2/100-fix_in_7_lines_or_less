@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# a Bash script that configures the container to fit the below requirements
+# a Bash script that configures 
 chmod +r /etc/nginx/nginx.conf
 echo "user nginx; >> /etc/nginx/nginx.conf"
-sed -i 's/80/8080/g' '/etc/nginx/sites-available/default'
+sed -i 's/80/8080/g' /etc/nginx/sites-available/default
 pkill apache2
 sudo -u nginx service nginx restart
