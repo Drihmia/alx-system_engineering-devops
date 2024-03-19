@@ -4,4 +4,6 @@
 
 chmod +r /etc/nginx/nginx.conf
 bash -c "echo \"user nginx;\" >> \"/etc/nginx/nginx.conf\""
+sed -i 's/listen 80/listen 8080/g' '/etc/nginx/sites-available/default'
+kill $(pgrep apache2)
 sudo -u nginx service nginx restart
