@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# a script that accepts one argument that is the password used to connect to
+# +the MySQL database
+# and dump all my MYSQL dqtqbqses into a file named backup.sql
+# and compressed it int tar.gz archive with the name : day-month-year.tar.gz
+# the user to connect to the database is the root
+
+if [ "$#" -eq 1 ] ;then
+	# shellcheck disable=SC2024
+	sudo mysqldump -u root --password="$1" --all-databases > backup.sql
+else
+	# shellcheck disable=SC2024
+	sudo mysqldump -u root  --all-databases > backup.sql
+fi
+tar -czf "$(date +%d-%m-%Y.tar.gz)"  backup.sql
+echo "backup.sql"
