@@ -18,17 +18,17 @@ if __name__ == "__main__":
 
         if not isinstance(employee_id, int):
             exit(0)
-        
+
         # commun informations.
         usrid = f"userId={employee_id}"
         idd = f"{employee_id}"
         task_c = "completed=true"
         url = "https://jsonplaceholder.typicode.com"
-        
+
         # commun informations for task 2.
-        json ={f"{employee_id}": []}
+        json = {f"{employee_id}": []}
         json_l = json[f"{employee_id}"]
-        
+
         # getting the list of tasks
         url_full_todo = f"{url}/todos?{usrid}"
         with get(url_full_todo) as response:
@@ -43,7 +43,9 @@ if __name__ == "__main__":
         for task in list_tasks:
             t_st = task.get("completed", "not found")
             title = task.get("title", "not found")
-            json_l.append({"task": title, "completed": t_st, "username": empl_un})
+            json_l.append({"task": title,
+                           "completed": t_st,
+                           "username": empl_un})
 
         with open(f"{idd}.json", "w", encoding="utf-8") as f:
             dump(json, f)

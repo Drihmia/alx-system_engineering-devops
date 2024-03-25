@@ -23,7 +23,6 @@ if __name__ == "__main__":
         task_c = "completed=true"
         url = "https://jsonplaceholder.typicode.com"
 
-
         # getting Number of tasks
         url_full_todo = f"{url}/todos?{usrid}"
         with get(url_full_todo) as response:
