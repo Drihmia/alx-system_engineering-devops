@@ -17,6 +17,10 @@ def top_ten(subreddit):
     headers = {'User-Agent': user_agent}
 
     r = requests.get(url, headers=headers, allow_redirects=False)
+
+    if r.status_code != 200:
+        return
+
     json = r.json()
 
     # getting the main data of the Listing.
