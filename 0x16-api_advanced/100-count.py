@@ -1,10 +1,10 @@
 #!/usr/bin/python3
-"""A module that contains recurse's function"""
+"""A module that contains count_words's function"""
 
 import requests
 
 
-def recurse(subreddit, hot_list=[], after=None):
+def count_words(subreddit, word_list, after=None, word_dict={}):
     """A function that queries the Reddit API and returns a list containing
     the titles of all hot articles for a given subreddit.
 
@@ -26,6 +26,10 @@ def recurse(subreddit, hot_list=[], after=None):
     if r.status_code != 200:
         return
 
+    word_list = (([word.lower() for word in word_list]))
+    if not word_dict:
+        word_dict = {word: 0 for word in word_list}
+
     json = r.json()
 
     # getting the main data of the Listing.
@@ -43,17 +47,16 @@ def recurse(subreddit, hot_list=[], after=None):
         data = child.get("data")
 
         if data.get("subreddit_id").startswith("t5"):
-            # print(data.get("title"))
             title = data.get("title")
             if title:
-                hot_list.append(title)
-            else:
-                return None
-    # checks for 1st rwxursive call if anything has been appended to hot_list
-    # +If not, means no results has been found.
-    if not hot_list:
-        return None
-
+                for word in word_dict:
+                    title = title.lower()
+                    title_list = title.split()
+                    if word in title_list:
+                        word_dict[word] += title_list.count(word)
     if not after:
-        return hot_list
-    return recurse(subreddit, hot_list, after=after)
+        for word, count in word_dict.items():
+            print("{}:".format(word), count)
+        return word_dict
+
+    return count_words(subreddit, word_list, after=after, word_dict=word_dict)
