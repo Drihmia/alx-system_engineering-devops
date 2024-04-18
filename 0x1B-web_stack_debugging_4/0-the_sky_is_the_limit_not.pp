@@ -1,5 +1,5 @@
 # raise number of request in the stack to handle
 file {'/etc/default/nginx':
   ensure  => present,
-  content => 'ULIMIT="-n 3000"',
+  content => 'ULIMIT="-n 6000"',
   }
