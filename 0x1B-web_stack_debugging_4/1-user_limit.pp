@@ -1,3 +1,4 @@
+# raise number of files can be opened simultaneously
 file { '/etc/default/nginx':
   ensure => present,
 }
