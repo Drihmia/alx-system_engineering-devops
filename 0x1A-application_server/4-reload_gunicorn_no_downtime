@@ -2,12 +2,12 @@
 # reload gracefully gunicorn
 
 # get the Gunicorn master process ID
-gunicorn_pid=$(pgrep gunicorn | head -1)
+gunicorn_pid=($(pgrep gunicorn))
 
 # check if Gunicorn is running
 if [[ -z "$gunicorn_pid" ]]; then
-  exit 1
+  exit 0
 fi
 
 # send HUP signal to the master process for graceful reload
-kill -HUP "$gunicorn_pid"
+kill -HUP "${gunicorn_pid[0]}"
