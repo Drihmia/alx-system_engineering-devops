@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# reload gracefully gunicorn
+sudo systemctl restart gunicorn
