@@ -1,13 +1,17 @@
 #!/usr/bin/env bash
 # reload gracefully gunicorn
 
-# get the Gunicorn master process ID
-gunicorn_pid=($(pgrep gunicorn))
+# declare an array to store Gunicorn master process IDs
+# +shellcheck issue using gunicorn_pid=($(pgrep gunicorn))
+declare -a gunicorn_pids
 
-# check if Gunicorn is running
-if [[ -z "$gunicorn_pid" ]]; then
+# populate the array with Gunicorn master process IDs
+read -r -a gunicorn_pids <<< "$(pgrep gunicorn)"
+
+# check if any Gunicorn process is running
+if [[ ${#gunicorn_pids[@]} -eq 0 ]]; then
   exit 0
 fi
 
-# send HUP signal to the master process for graceful reload
-kill -HUP "${gunicorn_pid[0]}"
+# send HUP signal to the first master process for graceful reload
+kill -HUP "${gunicorn_pids[0]}"
