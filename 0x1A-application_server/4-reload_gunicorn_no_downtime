@@ -1,3 +1,16 @@
 #!/usr/bin/env bash
 # reload gracefully gunicorn
-sudo systemctl restart gunicorn
+
+# get the Gunicorn master process ID
+gunicorn_pid=$(pgrep gunicorn | head -1)
+
+# check if Gunicorn is running
+if [[ -z "$gunicorn_pid" ]]; then
+  exit 1
+fi
+
+# send HUP signal to the master process for graceful reload
+kill -HUP "$gunicorn_pid"
+
+
+sleep 10

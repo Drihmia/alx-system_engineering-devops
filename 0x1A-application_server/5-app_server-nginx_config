@@ -1,4 +1,6 @@
+# task 5
 server {
+        # listen to port 80
         listen 80 default_server;
         listen [::]:80 default_server;
 
@@ -7,42 +9,40 @@ server {
         # Add index.php to the list if you are using PHP
         index index.html index.htm index.nginx-debian.html;
 
+        # server name.
         server_name _;
+
+        # add custom header.
         add_header X-Served-By "510946-web-01";
 
+        # task 2
         location /airbnb-onepage/ {
                 proxy_pass http://100.26.168.177:5000/airbnb-onepage/;
-                add_header X-proxied "yes";
-                add_header X-Served-By "510946-web-01";
-                proxy_set_header X-proxied "YES";
                 proxy_set_header Host $host;
                 proxy_set_header X-Real-IP $remote_addr;
                 proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
                 proxy_set_header X-Forwarded-Proto $scheme;
         }
 
+        # task 3
         location ~ /airbnb-dynamic/number_odd_or_even/([0-9]+) {
                 proxy_pass http://100.26.168.177:5001/number_odd_or_even/$1;
-                add_header X-Served-By "510946-web-01";
-                add_header X-proxied "yes";
-                proxy_set_header X-proxied "YES";
                 proxy_set_header Host $host;
                 proxy_set_header X-Real-IP $remote_addr;
                 proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
                 proxy_set_header X-Forwarded-Proto $scheme;
         }
 
+        # task 4
         location ~ /api/(.+) {
                 proxy_pass http://127.0.0.1:5002;
-                add_header X-Served-By "510946-web-01";
-                add_header X-PROXIED "yes";
-                proxy_set_header X-proxied-prox "YES";
                 proxy_set_header Host $host;
                 proxy_set_header X-Real-IP $remote_addr;
                 proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
                 proxy_set_header X-Forwarded-Proto $scheme;
         }
 
+        # task 5
         location / {
                 proxy_pass http://127.0.0.1:5003/2-hbnb;
                 add_header X-Served-By "510946-web-01";
@@ -57,18 +57,17 @@ server {
                 try_files $uri $uri/ =404;
         }
 
+        # task 5
         location /static {
                 alias /home/ubuntu/AirBnB_clone_v4/web_dynamic/static;
         }
 
-        location = /redirect_me/ {
-                return 301 https://github.com/Drihmia;
-        }
-
+        # custom error page
         error_page 404 /404.html;
-
+        
+        # cusomt error page
         location = /404.html {
                 root /var/www/html;
                 internal;
-                }
+        }
 }
