@@ -11,6 +11,3 @@ fi
 
 # send HUP signal to the master process for graceful reload
 kill -HUP "$gunicorn_pid"
-
-
-sleep 10
