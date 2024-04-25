@@ -15,7 +15,7 @@ export HBNB_TYPE_STORAGE=db
 
 ## task 3:
 ```bash
-cd /home/ubuntu/AirBnB_clone_v2
+git clone https://github.com/Drihmia/AirBnB_clone_v2 && cd AirBnB_clone_v2
 
 tmux new-session -d ' gunicorn --bind 0.0.0.0:5001 web_flask.0-hello_route:app'
 ```
@@ -23,14 +23,14 @@ tmux new-session -d ' gunicorn --bind 0.0.0.0:5001 web_flask.0-hello_route:app'
 
 ## task 4:
 ```bash
-cd /home/ubuntu/AirBnB_clone_v3
+git clone https://github.com/Drihmia/AirBnB_clone_v3 && cd AirBnB_clone_v3
 
 tmux new-session -d 'gunicorn --bind 0.0.0.0:5002 api.v1.app:app'
 ```
 
 ## task 5:
 ```bash
-cd /home/ubuntu/AirBnB_clone_v4
+git clone https://github.com/ubonisrael/AirBnB_clone_v4 && cd AirBnB_clone_v4
 
 tmux new-session -d 'gunicorn --bind 0.0.0.0:5003 web_dynamic.2-hbnb:app'
 ```
@@ -66,6 +66,3 @@ tmux new-session -d 'gunicorn --bind 0.0.0.0:5003 web_dynamic.2-hbnb:app'
     ```
     #  Example: ULIMIT="-n 4096
     ```
-
-
-
